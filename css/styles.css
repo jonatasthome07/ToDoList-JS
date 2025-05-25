@@ -6,3 +6,10 @@
     font-family: Helvetica;
     color: #333;
 }
+
+body{
+    background-image: url(../img/bg.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
