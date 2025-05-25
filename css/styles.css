@@ -41,3 +41,7 @@ button i{
     font-weight: bold;
     pointer-events: none;
 }
+
+input, select{
+    padding: 0.25rem .5rem;
+}
