@@ -46,9 +46,15 @@ input, select{
     padding: 0.25rem .5rem;   
 }
 
+input{
+    border-radius: 15px;
+}
+
 .hide{
     display: none;
 }
+
+/*Container principal*/
 
 .todo-container{
     max-width: 480px;
@@ -62,4 +68,30 @@ input, select{
     text-align: center;
     padding: 0 1rem 1rem;
     border-bottom: 1px solid #ccc;
+}
+
+/*Forms*/
+#todo-form, 
+#edit-form{
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+#todo-form p,
+#edit-form p{
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-control{
+    display: flex;
+}
+
+.form-control input{
+    margin-right: .3rem ;
+    
+}
+
+#cancel-edit-btn{
+    margin-top: 1rem;
 }
