@@ -46,10 +46,6 @@ input, select{
     padding: 0.25rem .5rem;   
 }
 
-input{
-    border-radius: 15px;
-}
-
 .hide{
     display: none;
 }
@@ -95,3 +91,39 @@ input{
 #cancel-edit-btn{
     margin-top: 1rem;
 }
+
+/*Tool Bar*/
+#tool-bar{
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+}
+
+#tool-bar h4{
+    margin-bottom: .5rem;
+}
+
+#search{
+    border-right: 1px solid #ccc;
+    padding-right: 1rem;
+    margin-right: 1rem;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+}
+
+#search form{
+    display: flex;
+}
+
+#search input{
+    width: 100%;
+    margin-right: .3rem;
+}
+
+#filter{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+}
+
