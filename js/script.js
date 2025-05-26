@@ -6,3 +6,12 @@ const editForm = document.querySelector("#edit-form")
 const editInput = document.querySelector("#edit-input")
 const cancelEditBtn = document.querySelector("#cancel-edit-btn")
 
+todoForm.addEventListener("submit", (e) =>{
+    e.preventDefault();
+    console.log("Form enviado!")
+
+    const inputValue = todoInput.value
+    if(inputValue){
+        console.log(inputValue)
+    }
+})
