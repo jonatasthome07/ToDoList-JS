@@ -1,14 +1,14 @@
 //Seleção de Elementos
 const todoForm = document.querySelector("#todo-form")
 const todoInput = document.querySelector("#todo-input")
-const todoList = document.querySelector("#todo-lisr")
+const todoList = document.querySelector("#todo-list")
 const editForm = document.querySelector("#edit-form")
 const editInput = document.querySelector("#edit-input")
 const cancelEditBtn = document.querySelector("#cancel-edit-btn")
 
 
 //Funções
-const saveToDo = (text) =>{
+const saveToDo = (text) => {
     const todo = document.createElement("div")
     todo.classList.add("todo")
     
@@ -19,14 +19,27 @@ const saveToDo = (text) =>{
     const doneBtn = document.createElement("button")
     doneBtn.classList.add("finish-todo")
     doneBtn.innerHTML = '<i class="fas fa-check"></i>'
-    
+    todo.appendChild(doneBtn)
+
+    const editBtn = document.createElement("button")
+    editBtn.classList.add("edit-todo")
+    editBtn.innerHTML = '<i class="fas fa-pen"></i>'
+    todo.appendChild(editBtn)
+
+    const deleteBtn = document.createElement("button")
+    deleteBtn.classList.add("remove-todo")
+    deleteBtn.innerHTML = '<i class="fas fa-xmark"></i>'
+    todo.appendChild(deleteBtn)
+
+    todoList.appendChild(todo) 
+
+    todoInput.value = ""
+    todoInput.focus()
 }
 
 //Eventos
 todoForm.addEventListener("submit", (e) =>{
     e.preventDefault();
-    console.log("Form enviado!")
-
     const inputValue = todoInput.value
     if(inputValue){
         saveToDo(inputValue)
