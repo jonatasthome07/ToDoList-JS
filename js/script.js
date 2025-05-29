@@ -13,7 +13,7 @@ let oldInputValue;
 
 
 //Funções
-const saveToDo = (text) => {
+const saveToDo = (text, done = 0, save = 1) => {
     const todo = document.createElement("div")
     todo.classList.add("todo")
     
@@ -36,6 +36,14 @@ const saveToDo = (text) => {
     deleteBtn.innerHTML = '<i class="fas fa-xmark"></i>'
     todo.appendChild(deleteBtn)
 
+    // Utilizando dados da LocalStorage
+    if (done){
+        todo.classList.add("done")
+    }
+    if (save){
+        saveTodoLocalStorage({text, done})
+    }
+
     todoList.appendChild(todo) 
 
     todoInput.value = ""
@@ -49,7 +57,6 @@ const toggleForms = () =>{
 }
 
 const updateTodo = (text) =>{
-    
     const todos = document.querySelectorAll(".todo")
     todos.forEach((todo) => {
         let todoTitle = todo.querySelector("h3")
@@ -60,7 +67,6 @@ const updateTodo = (text) =>{
 }
 
 const getSearchTodos = (search) =>{
-
     const todos = document.querySelectorAll(".todo")
     todos.forEach((todo) => {
         let todoTitle = todo.querySelector("h3").innerText.toLowerCase();
@@ -72,11 +78,9 @@ const getSearchTodos = (search) =>{
             todo.style.display = "none"
         } 
     })
-
 }
 
 const filterTodos = (filterValue) =>{
-    
     const todos = document.querySelectorAll(".todo")
     switch(filterValue){
         case "all":
@@ -95,8 +99,6 @@ const filterTodos = (filterValue) =>{
         default:
         break;
     }
-
-
 }
 
 //Eventos
@@ -154,6 +156,7 @@ searchInput.addEventListener("keyup", (e)=>{
 eraseBtn.addEventListener("click", (e)=>{
     e.preventDefault()
     searchInput.value = ""
+    searchInput.focus();
     searchInput.dispatchEvent(new Event("keyup"))
 })
 
@@ -161,3 +164,15 @@ filterBtn.addEventListener("change", (e)=>{
     const filterValue = e.target.value;
     filterTodos(filterValue);
 })
+
+//Local Storage
+const getTodosLocalStorage = () => {
+    const todos = JSON.parse(localStorage.getItem("todos")) || []
+    return todos;
+}
+
+const saveTodoLocalStorage = (todo) => {
+    const todos = getTodosLocalStorage();
+    todos.push(todo)
+    localStorage.setItem("todos", JSON.stringify(todos));
+}
